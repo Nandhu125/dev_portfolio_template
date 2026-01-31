@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+/* ============================================
+   TAILWIND v4 THEME CONFIGURATION
+   ============================================ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  /* Colors */
+  --color-primary: #1f6b75;
+  --color-background-light: #ffffff;
+  --color-background-dark: #121212;
+  --color-surface-dark: #1e1e1e;
+  --color-muted-teal: #9bbcc0;
+
+  /* Typography */
+  --font-display: "Satoshi", sans-serif;
+  --font-heading: "Satoshi", sans-serif;
+  --font-sans: "Satoshi", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Custom Animations */
+  --animate-loading-bar: loading-bar 1.5s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.8s ease-out forwards;
+  --animate-scale-in: scale-in 0.6s ease-out forwards;
+  --animate-line-reveal: line-reveal 0.8s ease-out forwards;
+  --animate-scroll-line: scroll-line 1.5s ease-in-out infinite;
+
+  /* Keyframes */
+  @keyframes loading-bar {
+    0% {
+      width: 0%;
+    }
+
+    50% {
+      width: 70%;
+    }
+
+    100% {
+      width: 100%;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes line-reveal {
+    from {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    to {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  @keyframes scroll-line {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 1;
+    }
+
+    80% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+}
+
+/* ============================================
+   TAILWIND UTILITIES
+   ============================================ */
+
+input:focus,
+textarea:focus,
+select:focus,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit;
+}
+
+textarea {
+  border: none !important;
+  outline: none !important;
+}
+
+.nav-pill {
+  --nav-bg: rgba(255, 255, 255, 0.5);
+  --nav-border: rgba(255, 255, 255, 0.5);
+  --nav-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  background: var(--nav-bg);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--nav-border);
+  box-shadow: var(--nav-shadow);
+  transition: all 0.3s ease;
+}
+
+.dark .nav-pill {
+  --nav-bg: rgba(255, 255, 255, 0.1);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+@utility grid-line-v {
+  width: 1px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+@utility grid-line-v-dark {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@utility grid-line-h {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+@utility grid-line-h-dark {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@utility glow-primary {
+  box-shadow: 0 0 40px rgba(31, 107, 117, 0.15);
+}
+
+@utility noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+@utility image-zoom {
+  overflow: hidden;
+}
+
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+
+/* ============================================
+   REQUIRED LIBRARY STYLES (Lenis Smooth Scroll)
+   ============================================ */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ============================================
+   REQUIRED EXTERNAL FONT STYLES (Material Icons)
+   ============================================ */
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+body {
+  font-family: "Satoshi", sans-serif;
+}
+
+::selection {
+  background-color: rgba(31, 107, 117, 0.3);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   THEME TRANSITIONS
+   ============================================ */
+
+html,
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ============================================
+   PERFORMANCE-OPTIMIZED ANIMATIONS (Zero JS TBT)
+   ============================================ */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Down (for Navbar) */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Animation delay utilities */
+.animation-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+/* Scroll-reveal animation using native CSS animation-timeline */
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern scroll-driven animation (Chrome 115+, Safari 18+) */
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: scrollReveal linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+}
+
+/* Fallback for browsers without animation-timeline */
+@supports not (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: calc(var(--stagger, 0) * 0.1s);
+  }
+
+  @starting-style {
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
