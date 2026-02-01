@@ -34,8 +34,8 @@ Follow these steps to get your portfolio up and running in minutes.
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/portfolio-template.git
-   cd portfolio-template
+   git clone https://github.com/Nandhu125/dev_portfolio_template.git
+   cd dev_portfolio_template
    ```
 
 2. **Install dependencies**
@@ -97,7 +97,7 @@ To change the primary brand color, modify `src/app/globals.css`:
 
 The easiest way to deploy is using [Vercel](https://vercel.com). Code is pushed? You are live.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fportfolio-template)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNandhu125%2Fdev_portfolio_template)
 
 1. Push your code to a GitHub repository.
 2. Import the project into Vercel.
